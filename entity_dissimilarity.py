@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-r"""
-- Computes normalized dissimilarity between every pair using paper's formula:
-    disnorm(a,b) = log2(1 + (|A\B| + |B\A|) / (|A\B| + |B\A| + |A∩B|))
-- Saves:
-    - entity_subsumers.json  (entity -> list of subsumer URIs)
-    - dissimilarity_matrix.json (entity -> { entity: dissimilarity })
-"""
-
 import os
 import json
 import math
@@ -211,3 +202,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
