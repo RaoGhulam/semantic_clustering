@@ -1,5 +1,4 @@
 # Ontology-based Semantic Clustering
 
-| Input | Output |
-|---------|---------|
-| ![Alt text](image.png) | ![Alt text](image1.png) |
+<img src="image.png"/>
+<img src="image1.png"/>
