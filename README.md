@@ -30,19 +30,6 @@ pip install -r requirements.txt
 ```
 ---
 
-## Semantic Clustering vs Traditional Clustering
-
-Traditional clustering methods (like K-Means or hierarchical clustering using bag-of-words or TF-IDF) group data based on surface-level similarities—i.e., the exact words or features that appear in the sentences. If two sentences use different words, they may be considered completely different, even if they mean the same thing.
-
-Semantic clustering, on the other hand, groups sentences based on meaning rather than exact wording.
-Example:
-
-""I performed Fajar, Zuhr, and Bright Moon Fasting today. During Hajj, I visited Mina and performed Tawaf."
-
-"I performed the Islamic morning prayer, noon salah, and observed Ayyamul Beed fasting today. During the mandatory Islamic pilgrimage, I visited the Mina Valley and performed Namaz-e-Tawaf."
-
-Traditional clustering might treat these as different, but semantic clustering recognizes their semantic similarity and groups them together.
-
 ## Methodology
 1. **Entity Extraction**
 Sentences are first processed using **POS tagging** from NLTK to identify potential entities.
