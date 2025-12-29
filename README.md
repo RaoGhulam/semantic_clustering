@@ -39,7 +39,7 @@ Extracted entities are linked to real entities in the ontology. This step uses *
 
 3. **Entity-to-Entity Dissimilarity**
 For any two sentences, a **precomputed entity-to-entity dissimilarity matrix** is used to calculate the dissimilarity score between each entity in the first sentence and each entity in the second sentence.  
-**Note:** This method is based on the work by D. Sánchez et al., ***“Ontology-based semantic similarity: A new feature-based approach”, Expert Systems with Applications,*** 2012 (Elsevier).  
+**Note:** The entity-to-entity dissimilarity score is calculated using the method proposed by D. Sánchez et al., ***“Ontology-based semantic similarity: A new feature-based approach”, Expert Systems with Applications,*** 2012 (Elsevier).  
 For more details, refer to the [**Taxonomy-based Feature Dissimilarity Measure** PDF](taxonomy_based_feature_dissimilarity_measure.pdf).
 
 5. **Sentence-Level Dissimilarity**
