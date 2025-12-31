@@ -31,6 +31,7 @@ pip install -r requirements.txt
 ---
 
 ## Methodology
+### Ontology-based Clustering
 1. **Entity Extraction**
 Sentences are first processed using **POS tagging** from NLTK to identify potential entities.
 
@@ -48,6 +49,19 @@ These scores are stored in a **NumPy matrix** called `sentence_dissimilarity_mat
 For more details, refer to the [**Taxonomy-based Feature Dissimilarity Measure** PDF](taxonomy_based_feature_dissimilarity_measure.pdf).
 
 6. **Clustering Sentences**  
+   - Apply **Agglomerative Hierarchical Clustering** using **average linkage**, with the sentence dissimilarity matrix as the distance metric.  
+   - Compute the **Silhouette score** to determine the **optimal number of clusters**.  
+   - Using the optimal number of clusters, create a **clustered set of sentences**, where semantically similar sentences are grouped together.
+
+### Neural Network–based Clustering
+1. **Contextual Embeddings**
+Sentences are converted into vector representations using the **transformer-based model all-MiniLM-L6-v2**, enabling semantic understanding.
+
+2. **Cosine Similarity Matrix**
+Pairwise cosine similarity scores are computed between all sentences, resulting in a sentence-to-sentence similarity matrix where each entry reflects the semantic closeness between two sentences.
+The similarity matrix is then subtracted from 1 to produce a **sentence dissimilarity matrix**, which serves as the distance metric for clustering.
+
+3. **Clustering Sentences**  
    - Apply **Agglomerative Hierarchical Clustering** using **average linkage**, with the sentence dissimilarity matrix as the distance metric.  
    - Compute the **Silhouette score** to determine the **optimal number of clusters**.  
    - Using the optimal number of clusters, create a **clustered set of sentences**, where semantically similar sentences are grouped together.
