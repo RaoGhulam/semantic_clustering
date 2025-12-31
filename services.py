@@ -7,7 +7,6 @@ def get_sentences_from_files(files):
     sentences = []
     for file in files:
         name = file.filename.lower()
-        print(name)
         if name.endswith('.txt'):
             text = file.read().decode('utf-8')
             file_sentences = [line.strip() for line in text.split('\n') if line.strip()]
