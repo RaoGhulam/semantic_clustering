@@ -1,7 +1,4 @@
 from sklearn.cluster import AgglomerativeClustering
-from scipy.cluster.hierarchy import dendrogram, linkage
-from scipy.spatial.distance import squareform
-import matplotlib.pyplot as plt
 from ontology_sentence_dissimilarity import ontology_sentence_dissimilarity_matrix
 from neural_sentence_dissimilarity import neural_sentence_dissimilarity_matrix
 from collections import defaultdict
@@ -49,30 +46,4 @@ def cluster_sentences(sentences, clustering_method, max_clusters=10):
     for sentence, label in zip(sentences, labels):
         clusters[label].append(sentence)
 
-    # Optional: visualize dendrogram
-    # if visualize:
-    #     condensed_dist = squareform(dissimilarity_matrix)
-    #     Z = linkage(condensed_dist, method='average')
-    #     plt.figure(figsize=(10, 5))
-    #     dendrogram(Z, labels=[f"Sent {i}" for i in range(len(sentences))])
-    #     plt.title(f"Hierarchical Clustering Dendrogram (Optimal clusters: {best_n})")
-    #     plt.show()
-
-    return clusters, best_n
-
-
-# ------------------------Standalone usage------------------------
-if __name__ == "__main__":
-    example_sentences = [
-        "I performed Fajr, Zuhr, and Bright Moon fasting today at Masjid al-Haraam.",
-        "During Hajj, I visited Mina and performed Tawaff prayer around Mataf.",
-        "I observed Ramadan fasting and offered Asar and Maghrib prayers.",
-        "Today, I gave Zakat al-Maal to eligible people through Amil and Distribution channels."
-    ]
-
-    clustered, optimal_n = cluster_sentences(example_sentences, visualize=True)
-    print(f"\nOptimal number of clusters: {optimal_n}")
-    for label, cluster_sents in clustered.items():
-        print(f"\nCluster {label}:")
-        for s in cluster_sents:
-            print(f" - {s}")
+    return clusters, best_score
