@@ -1,7 +1,7 @@
 # Ontology-based Semantic Clustering
 
-<img src="image.png"/>
-<img src="image1.png"/>
+<img src="image.PNG"/>
+<img src="image1.PNG"/>
 
 ## Installation
 
