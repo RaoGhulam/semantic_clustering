@@ -197,22 +197,31 @@ analyzeButton.addEventListener('click', () => {
         // Clear previous results
         resultsContainer.innerHTML = '<h2>Analysis Results</h2>';
 
+        // Show the best silhouette score
+        const scoreDiv = document.createElement('div');
+        scoreDiv.classList.add('silhouette-score');
+        scoreDiv.textContent = `Best Silhouette Score: ${data.best_silhouette_score.toFixed(3)}`;
+        resultsContainer.appendChild(scoreDiv);
+
+        // Extract clusters
+        const clusters = data.clusters;
+
         // Global "Download All" button
         const downloadAllBtn = document.createElement('button');
         downloadAllBtn.classList.add('download-button');
         downloadAllBtn.textContent = 'Download All Clusters';
         downloadAllBtn.addEventListener('click', () => {
             let allText = '';
-            for (const clusterId in data) {
+            for (const clusterId in clusters) {
                 allText += `Cluster ${clusterId}:\n`;
-                allText += data[clusterId].join('\n') + '\n\n';
+                allText += clusters[clusterId].join('\n') + '\n\n';
             }
             downloadText('all_clusters.txt', allText);
         });
         resultsContainer.appendChild(downloadAllBtn);
 
         // Iterate over clusters and display
-        for (const clusterId in data) {
+        for (const clusterId in clusters) {
             const clusterDiv = document.createElement('div');
             clusterDiv.classList.add('cluster');
 
@@ -221,7 +230,7 @@ analyzeButton.addEventListener('click', () => {
             clusterDiv.appendChild(clusterTitle);
 
             const ul = document.createElement('ul');
-            data[clusterId].forEach(sentence => {
+            clusters[clusterId].forEach(sentence => {
                 const li = document.createElement('li');
                 li.textContent = sentence;
                 ul.appendChild(li);
@@ -234,7 +243,7 @@ analyzeButton.addEventListener('click', () => {
             downloadBtn.classList.add('download-button');
             downloadBtn.textContent = 'Download Cluster';
             downloadBtn.addEventListener('click', () => {
-                downloadText(`cluster_${clusterId}.txt`, data[clusterId].join('\n'));
+                downloadText(`cluster_${clusterId}.txt`, clusters[clusterId].join('\n'));
             });
             clusterDiv.appendChild(downloadBtn);
 
