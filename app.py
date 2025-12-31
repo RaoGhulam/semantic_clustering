@@ -27,12 +27,14 @@ def analyze():
     else:
         raise ValueError("Neither text nor files were provided.")
 
-    
-    result, number_of_clusters = cluster_sentences(sentences, clustering_method)
-    print(number_of_clusters)
+    result, best_silhouette_score = cluster_sentences(sentences, clustering_method)
     result_fixed = {int(k): v for k, v in result.items()}
-    
-    return jsonify(result_fixed)
+
+    # Return both the clusters and the best silhouette score
+    return jsonify({
+        "clusters": result_fixed,
+        "best_silhouette_score": best_silhouette_score
+    })
 
 if __name__ == '__main__':
     app.run(debug=True)
